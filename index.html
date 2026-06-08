@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduNova Corporation — World-Class Language Education</title>
+  <meta name="description" content="EduNova Corporation builds language learning platforms combining scientifically validated pedagogy with adaptive technology. Explore EspañolGo and EnglishLevelUp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #22D0A5;
+      --green-dark: #1DA882;
+      --blue: #378ADD;
+      --blue-mid: #5BA8E8;
+      --bg-base: #0B1120;
+      --bg-alt: #0E1628;
+      --bg-card: #131D2E;
+      --bg-deep: #080E1A;
+      --text-primary: #E8EDF5;
+      --text-muted: rgba(232,237,245,0.6);
+      --text-faint: rgba(232,237,245,0.45);
+      --text-hint: rgba(232,237,245,0.35);
+      --border: rgba(255,255,255,0.08);
+      --border-subtle: rgba(255,255,255,0.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(11,17,32,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .nav-logo span.accent { color: var(--green); }
+    .nav-logo span.corp {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--text-hint);
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.5px;
+      transition: all .2s;
+    }
+    .lang-btn.active { background: var(--green); color: var(--bg-base); }
+    .nav-cta {
+      background: var(--green);
+      color: var(--bg-base);
+      border: none;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--green-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 48px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(34,208,165,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34,208,165,0.1);
+      border: 0.5px solid rgba(34,208,165,0.3);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin: 0 auto 20px;
+      max-width: 780px;
+    }
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg-base);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 0.5px solid rgba(232,237,245,0.25);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: rgba(232,237,245,0.5); }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+      border-top: 0.5px solid var(--border);
+      padding-top: 48px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 6px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 88px 48px; }
+    .section-alt { background: var(--bg-alt); }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .section .lead {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 52px;
+      font-weight: 300;
+    }
+
+    /* ── PLATFORMS ── */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 920px;
+    }
+    .plat-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+    .plat-card:hover { border-color: rgba(34,208,165,0.25); }
+    .plat-card-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .plat-card-accent.green { background: var(--green); }
+    .plat-card-accent.blue { background: var(--blue); }
+    .plat-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .plat-badge.live {
+      background: rgba(34,208,165,0.15);
+      color: var(--green);
+      border: 0.5px solid rgba(34,208,165,0.3);
+    }
+    .plat-badge.soon {
+      background: rgba(55,138,221,0.15);
+      color: var(--blue-mid);
+      border: 0.5px solid rgba(55,138,221,0.3);
+    }
+    .plat-icon {
+      font-size: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 1;
+    }
+    .plat-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .plat-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .plat-feats { list-style: none; margin-bottom: 28px; }
+    .plat-feats li {
+      font-size: 13px;
+      color: rgba(232,237,245,0.7);
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plat-feats li i { color: var(--green); font-size: 14px; }
+    .plat-btn {
+      width: 100%;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      border: none;
+      transition: opacity .2s;
+    }
+    .plat-btn:hover { opacity: 0.85; }
+    .plat-btn.green { background: var(--green); color: var(--bg-base); }
+    .plat-btn.blue { background: transparent; color: var(--blue-mid); border: 0.5px solid rgba(55,138,221,0.4); }
+
+    /* ── METHOD ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .method-card {
+      background: var(--bg-card);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .method-num {
+      font-size: 11px;
+      color: rgba(34,208,165,0.5);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .method-icon { font-size: 22px; margin-bottom: 14px; color: var(--green); display: block; }
+    .method-card h4 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+    .method-card p { font-size: 13px; color: rgba(232,237,245,0.55); line-height: 1.65; font-weight: 300; }
+
+    /* ── TRUST ── */
+    .trust-row { display: flex; gap: 20px; flex-wrap: wrap; }
+    .trust-card {
+      flex: 1;
+      min-width: 180px;
+      background: var(--bg-card);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .trust-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .trust-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testi-card {
+      background: var(--bg-card);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .testi-stars { color: #F0A500; font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
+    .testi-quote {
+      font-size: 14px;
+      color: rgba(232,237,245,0.75);
+      line-height: 1.75;
+      margin-bottom: 18px;
+      font-weight: 300;
+      font-style: italic;
+    }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 500;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+    .testi-loc { font-size: 11px; color: var(--text-faint); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 88px 48px;
+      text-align: center;
+      background: var(--bg-alt);
+      border-top: 0.5px solid rgba(34,208,165,0.12);
+      border-bottom: 0.5px solid rgba(34,208,165,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(34,208,165,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-section p { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 0.5px solid rgba(232,237,245,0.3);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--bg-deep);
+      padding: 56px 48px 32px;
+      border-top: 0.5px solid var(--border-subtle);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--green); }
+    .footer-brand p { font-size: 13px; color: var(--text-faint); line-height: 1.7; font-weight: 300; }
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(232,237,245,0.4);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: rgba(232,237,245,0.55);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color .2s;
+      cursor: pointer;
+    }
+    .footer-col a:hover { color: var(--green); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--border-subtle);
+      padding-top: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(232,237,245,0.3); }
+    .social-links { display: flex; gap: 16px; }
+    .social-links a { font-size: 18px; color: rgba(232,237,245,0.35); cursor: pointer; transition: color .2s; text-decoration: none; }
+    .social-links a:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px 48px; }
+      .hero h1 { font-size: 34px; }
+      .hero-stats { gap: 32px; }
+      .section { padding: 60px 20px; }
+      .section h2 { font-size: 28px; }
+      .platforms-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-section { padding: 60px 20px; }
+      .cta-section h2 { font-size: 28px; }
+      .footer { padding: 40px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Edu<span class="accent">Nova</span><span class="corp">Corporation</span></a>
+  <ul class="nav-links">
+    <li><a href="#platforms" data-es="Plataformas" data-en="Platforms">Plataformas</a></li>
+    <li><a href="#methodology" data-es="Metodología" data-en="Methodology">Metodología</a></li>
+    <li><a href="#results" data-es="Resultados" data-en="Results">Resultados</a></li>
+    <li><a href="#about" data-es="Nosotros" data-en="About Us">Nosotros</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Language selector">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')" aria-pressed="true">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
+    </div>
+    <button class="nav-cta" data-es="Comenzar ahora" data-en="Get Started">Comenzar ahora</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <i class="ti ti-award" aria-hidden="true"></i>
+    <span data-es="Educación lingüística de excelencia" data-en="World-Class Language Education">Educación lingüística de excelencia</span>
+  </div>
+  <h1 data-es="El idioma que dominas es la puerta<br>que nadie puede <em>cerrarte</em>" data-en="The language you master is the door<br>no one can ever <em>close on you</em>">El idioma que dominas es la puerta<br>que nadie puede <em>cerrarte</em></h1>
+  <p class="hero-sub" data-es="EduNova Corporation desarrolla plataformas de aprendizaje de idiomas que combinan pedagogía científicamente validada con tecnología adaptativa — para que cada estudiante alcance la fluidez real, no la teórica." data-en="EduNova Corporation builds language learning platforms that combine scientifically validated pedagogy with adaptive technology — so every student achieves real fluency, not just textbook knowledge.">EduNova Corporation desarrolla plataformas de aprendizaje de idiomas que combinan pedagogía científicamente validada con tecnología adaptativa — para que cada estudiante alcance la fluidez real, no la teórica.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" data-es="Explorar EspañolGo →" data-en="Explore EspañolGo →">Explorar EspañolGo →</button>
+    <button class="btn-secondary" data-es="Ver cómo funciona" data-en="See how it works">Ver cómo funciona</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">12,000+</div>
+      <div class="stat-lbl" data-es="Estudiantes activos" data-en="Active students">Estudiantes activos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">94%</div>
+      <div class="stat-lbl" data-es="Tasa de progresión de nivel" data-en="Level progression rate">Tasa de progresión de nivel</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">47</div>
+      <div class="stat-lbl" data-es="Países representados" data-en="Countries represented">Países representados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">A1→C2</div>
+      <div class="stat-lbl" data-es="Currículo MCER completo" data-en="Full CEFR curriculum">Currículo MCER completo</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="section section-alt" id="platforms">
+  <div class="section-tag" data-es="Nuestras plataformas" data-en="Our platforms">Nuestras plataformas</div>
+  <h2 data-es="Diseñadas para producir resultados" data-en="Built to deliver real results">Diseñadas para producir resultados</h2>
+  <p class="lead" data-es="Cada plataforma es un ecosistema completo: clases en vivo, materiales adaptativos, gamificación y comunidad — todo integrado para acelerar tu aprendizaje." data-en="Each platform is a complete ecosystem: live classes, adaptive materials, gamification and community — all integrated to accelerate your learning journey.">Cada plataforma es un ecosistema completo: clases en vivo, materiales adaptativos, gamificación y comunidad — todo integrado para acelerar tu aprendizaje.</p>
+  <div class="platforms-grid">
+    <!-- EspañolGo -->
+    <div class="plat-card">
+      <div class="plat-card-accent green"></div>
+      <div class="plat-badge live" data-es="Disponible ahora" data-en="Available now">Disponible ahora</div>
+      <div class="plat-icon">🗣️ 📚 🎯</div>
+      <h3>EspañolGo</h3>
+      <p data-es="Domina el español con profesores nativos certificados, un currículo MCER completo de A1 a C2 y una metodología que transforma la práctica diaria en progreso medible y duradero." data-en="Master Spanish with certified native teachers, a complete A1–C2 CEFR curriculum, and a methodology that turns daily practice into measurable, lasting progress.">Domina el español con profesores nativos certificados, un currículo MCER completo de A1 a C2 y una metodología que transforma la práctica diaria en progreso medible y duradero.</p>
+      <ul class="plat-feats">
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Clases en vivo con profesores nativos certificados" data-en="Live classes with certified native teachers">Clases en vivo con profesores nativos certificados</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Currículo A1 a C2 — 6 niveles completos" data-en="Full A1 to C2 curriculum — 6 complete levels">Currículo A1 a C2 — 6 niveles completos</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Juegos, retos y práctica diaria gamificada" data-en="Daily games, challenges and gamified practice">Juegos, retos y práctica diaria gamificada</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Sistema de XP y progresión de nivel" data-en="XP system and level progression tracking">Sistema de XP y progresión de nivel</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="VideoForos de conversación global" data-en="Global conversation video forums">VideoForos de conversación global</span></li>
+      </ul>
+      <button class="plat-btn green" data-es="Ir a EspañolGo →" data-en="Go to EspañolGo →">Ir a EspañolGo →</button>
+    </div>
+    <!-- EnglishLevelUp -->
+    <div class="plat-card">
+      <div class="plat-card-accent blue"></div>
+      <div class="plat-badge soon" data-es="Próximamente" data-en="Coming soon">Próximamente</div>
+      <div class="plat-icon">🇬🇧 🇨🇦 🇨🇴</div>
+      <h3>EnglishLevelUp</h3>
+      <p data-es="Desbloquea el inglés que abre carreras globales, mercados internacionales y nuevos horizontes profesionales. Diseñado para estudiantes serios que buscan fluidez de alto nivel, no solo lo básico conversacional." data-en="Unlock the English that opens global careers, international markets, and new professional horizons. Built for serious learners who want professional-grade fluency — not just conversational basics.">Desbloquea el inglés que abre carreras globales, mercados internacionales y nuevos horizontes profesionales. Diseñado para estudiantes serios que buscan fluidez de alto nivel, no solo lo básico conversacional.</p>
+      <ul class="plat-feats">
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Metodología probada y orientada a resultados" data-en="Proven, results-driven methodology">Metodología probada y orientada a resultados</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Preparación certificada IELTS / TOEFL" data-en="IELTS / TOEFL certified preparation">Preparación certificada IELTS / TOEFL</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Inglés de negocios y conversacional" data-en="Business English and conversational fluency">Inglés de negocios y conversacional</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Certificaciones internacionales reconocidas" data-en="Internationally recognized certifications">Certificaciones internacionales reconocidas</span></li>
+        <li><i class="ti ti-check" aria-hidden="true"></i><span data-es="Comunidad global de práctica" data-en="Global practice community">Comunidad global de práctica</span></li>
+      </ul>
+      <button class="plat-btn blue" data-es="Registrar interés →" data-en="Register your interest →">Registrar interés →</button>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="section" id="methodology">
+  <div class="section-tag" data-es="Metodología" data-en="Methodology">Metodología</div>
+  <h2 data-es="La ciencia detrás del aprendizaje" data-en="The science behind the learning">La ciencia detrás del aprendizaje</h2>
+  <p class="lead" data-es="No enseñamos idiomas — entrenamos mentes para pensar en ellos. Cada elemento de nuestra metodología responde a evidencia pedagógica real." data-en="We don't just teach languages — we train minds to think in them. Every element of our methodology is grounded in real pedagogical evidence.">No enseñamos idiomas — entrenamos mentes para pensar en ellos. Cada elemento de nuestra metodología responde a evidencia pedagógica real.</p>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-num">01</div>
+      <i class="ti ti-brain method-icon" aria-hidden="true"></i>
+      <h4 data-es="Adquisición por inmersión activa" data-en="Active immersion acquisition">Adquisición por inmersión activa</h4>
+      <p data-es="El cerebro no aprende idiomas memorizando reglas. Lo hace usándolos en contextos auténticos, con repetición espaciada y carga cognitiva calibrada." data-en="The brain doesn't learn languages by memorizing rules. It learns by using them in authentic contexts, with spaced repetition and calibrated cognitive load.">El cerebro no aprende idiomas memorizando reglas. Lo hace usándolos en contextos auténticos, con repetición espaciada y carga cognitiva calibrada.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">02</div>
+      <i class="ti ti-users method-icon" aria-hidden="true"></i>
+      <h4 data-es="Clases en vivo que aceleran" data-en="Live classes that accelerate">Clases en vivo que aceleran</h4>
+      <p data-es="Grupos reducidos con profesores nativos certificados generan el entorno de conversación real que ninguna app puede replicar. Interacción humana, no simulada." data-en="Small groups with certified native teachers create the real conversational environment no app can replicate. Human interaction — not simulated.">Grupos reducidos con profesores nativos certificados generan el entorno de conversación real que ninguna app puede replicar. Interacción humana, no simulada.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">03</div>
+      <i class="ti ti-trophy method-icon" aria-hidden="true"></i>
+      <h4 data-es="Gamificación con propósito" data-en="Gamification with purpose">Gamificación con propósito</h4>
+      <p data-es="XP, rachas diarias y niveles desbloqueables no son decoración — son arquitectura de comportamiento que convierte el estudio en hábito sostenible." data-en="XP points, daily streaks, and unlockable levels aren't decoration — they're behavioral architecture that turns studying into a sustainable habit.">XP, rachas diarias y niveles desbloqueables no son decoración — son arquitectura de comportamiento que convierte el estudio en hábito sostenible.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">04</div>
+      <i class="ti ti-chart-line method-icon" aria-hidden="true"></i>
+      <h4 data-es="Progreso trazable y medible" data-en="Trackable, measurable progress">Progreso trazable y medible</h4>
+      <p data-es="Cada lección completada, cada punto ganado y cada nivel alcanzado queda registrado. El estudiante siempre sabe exactamente dónde está y hacia dónde avanza." data-en="Every lesson completed, every point earned, every level reached is logged. Students always know exactly where they are and where they're headed.">Cada lección completada, cada punto ganado y cada nivel alcanzado queda registrado. El estudiante siempre sabe exactamente dónde está y hacia dónde avanza.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">05</div>
+      <i class="ti ti-microphone method-icon" aria-hidden="true"></i>
+      <h4 data-es="Pronunciación desde el primer día" data-en="Pronunciation from day one">Pronunciación desde el primer día</h4>
+      <p data-es="La corrección fonética temprana elimina los acentos fosilizados que el aprendizaje tardío ya no puede corregir. Pronunciación nativa como objetivo real." data-en="Early phonetic correction eliminates the fossilized accents that late-stage learning can no longer fix. Native-level pronunciation as a real, achievable target.">La corrección fonética temprana elimina los acentos fosilizados que el aprendizaje tardío ya no puede corregir. Pronunciación nativa como objetivo real.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">06</div>
+      <i class="ti ti-world method-icon" aria-hidden="true"></i>
+      <h4 data-es="Comunidad global de práctica" data-en="Global practice community">Comunidad global de práctica</h4>
+      <p data-es="Aprender en soledad tiene un techo bajo. La comunidad EduNova conecta estudiantes de 47 países para practicar, debatir y avanzar juntos cada día." data-en="Learning alone has a low ceiling. The EduNova community connects students from 47 countries to practice, debate, and grow together every day.">Aprender en soledad tiene un techo bajo. La comunidad EduNova conecta estudiantes de 47 países para practicar, debatir y avanzar juntos cada día.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section section-alt" id="results">
+  <div class="section-tag" data-es="Por qué EduNova" data-en="Why EduNova">Por qué EduNova</div>
+  <h2 data-es="Resultados que hablan solos" data-en="Numbers that speak for themselves">Resultados que hablan solos</h2>
+  <p class="lead" data-es="El éxito de nuestros estudiantes es la única métrica que importa. Estos son los números que lo demuestran." data-en="Our students' success is the only metric that matters. Here are the numbers that prove it.">El éxito de nuestros estudiantes es la única métrica que importa. Estos son los números que lo demuestran.</p>
+  <div class="trust-row">
+    <div class="trust-card">
+      <div class="trust-num">94%</div>
+      <p data-es="de los estudiantes que completan un nivel logran certificar en el siguiente dentro de 6 meses" data-en="of students who complete a level successfully certify at the next one within 6 months">de los estudiantes que completan un nivel logran certificar en el siguiente dentro de 6 meses</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-num">3.2×</div>
+      <p data-es="más rápido que los métodos tradicionales según pruebas de progresión estandarizadas" data-en="faster progress than traditional methods, based on standardized progression testing">más rápido que los métodos tradicionales según pruebas de progresión estandarizadas</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-num">4.9/5</div>
+      <p data-es="valoración promedio de los profesores en más de 8,000 clases evaluadas" data-en="average teacher rating across more than 8,000 evaluated live sessions">valoración promedio de los profesores en más de 8,000 clases evaluadas</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-num">47</div>
+      <p data-es="países de origen en nuestra comunidad activa — la diversidad cultural enriquece cada clase" data-en="countries of origin in our active community — cultural diversity that enriches every class">países de origen en nuestra comunidad activa — la diversidad cultural enriquece cada clase</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-tag" data-es="Testimonios" data-en="Student stories">Testimonios</div>
+  <h2 data-es="Lo que dicen nuestros estudiantes" data-en="What our students are saying">Lo que dicen nuestros estudiantes</h2>
+  <p class="lead" data-es="Historias reales de personas que invirtieron en su idioma y transformaron su carrera y su vida." data-en="Real stories from real people who chose to invest in language learning — and transformed their careers and lives because of it.">Historias reales de personas que invirtieron en su idioma y transformaron su carrera y su vida.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote" data-es='"En 8 meses pasé de no poder sostener una conversación a trabajar en una empresa internacional. EspañolGo cambió el rumbo de mi carrera."' data-en='"In 8 months I went from barely holding a conversation to landing a role at an international company. EspañolGo genuinely changed the direction of my career."'>"En 8 meses pasé de no poder sostener una conversación a trabajar en una empresa internacional. EspañolGo cambió el rumbo de mi carrera."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(34,208,165,0.15);color:#22D0A5;">MK</div>
+        <div>
+          <div class="testi-name">Markus K.</div>
+          <div class="testi-loc" data-es="Berlín, Alemania — Nivel B2 alcanzado" data-en="Berlin, Germany — B2 level achieved">Berlín, Alemania — Nivel B2 alcanzado</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote" data-es='"La combinación de clases en vivo con los juegos diarios hace que no quieras perderte ni una sesión. Aprender se convierte en algo que esperas con ganas."' data-en='"The mix of live classes and daily games makes you not want to miss a single session. Learning stops feeling like a chore and starts feeling like something you truly look forward to."'>"La combinación de clases en vivo con los juegos diarios hace que no quieras perderte ni una sesión. Aprender se convierte en algo que esperas con ganas."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(55,138,221,0.15);color:#5BA8E8;">SL</div>
+        <div>
+          <div class="testi-name">Sophie L.</div>
+          <div class="testi-loc" data-es="Lyon, Francia — Nivel A2→B1 en 5 meses" data-en="Lyon, France — A2 to B1 in 5 months">Lyon, Francia — Nivel A2→B1 en 5 meses</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote" data-es='"Lo que más me sorprendió fue que los profesores son nativos de verdad — no solo hablan bien el español, lo sienten. Eso se transmite en cada clase."' data-en='"What surprised me most was that the teachers are genuinely native — they don&apos;t just speak Spanish well, they feel it. That comes through in every single class."'>"Lo que más me sorprendió fue que los profesores son nativos de verdad — no solo hablan bien el español, lo sienten. Eso se transmite en cada clase."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(240,165,0,0.15);color:#F0A500;">JT</div>
+        <div>
+          <div class="testi-name">James T.</div>
+          <div class="testi-loc" data-es="Toronto, Canadá — Nivel A1→A2" data-en="Toronto, Canada — A1 to A2">Toronto, Canadá — Nivel A1→A2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="about">
+  <div class="section-tag" data-es="Tu próximo nivel" data-en="Your next level">Tu próximo nivel</div>
+  <h2 data-es="El mejor momento para empezar fue ayer.<br>El segundo mejor momento es hoy." data-en="The best time to start was yesterday.<br>The second best time is right now.">El mejor momento para empezar fue ayer.<br>El segundo mejor momento es hoy.</h2>
+  <p data-es="Primera semana gratuita. Sin tarjeta de crédito. Sin excusas." data-en="First week free. No credit card required. No excuses.">Primera semana gratuita. Sin tarjeta de crédito. Sin excusas.</p>
+  <div class="cta-btns">
+    <button class="btn-white" data-es="Comenzar con EspañolGo" data-en="Start with EspañolGo">Comenzar con EspañolGo</button>
+    <button class="btn-outline" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Edu<span>Nova</span> Corporation</div>
+      <p data-es="Transformamos vidas a través del dominio de idiomas — con tecnología educativa de vanguardia y pedagogía que produce resultados reales y medibles." data-en="We transform lives through language mastery — combining cutting-edge educational technology with pedagogy that delivers real, measurable results.">Transformamos vidas a través del dominio de idiomas — con tecnología educativa de vanguardia y pedagogía que produce resultados reales y medibles.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Plataformas" data-en="Platforms">Plataformas</h4>
+      <a>EspañolGo</a>
+      <a>EnglishLevelUp</a>
+      <a data-es="Planes y precios" data-en="Plans & pricing">Planes y precios</a>
+      <a data-es="Certificaciones" data-en="Certifications">Certificaciones</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Empresa" data-en="Company">Empresa</h4>
+      <a data-es="Sobre EduNova" data-en="About EduNova">Sobre EduNova</a>
+      <a data-es="Metodología" data-en="Methodology">Metodología</a>
+      <a data-es="Blog educativo" data-en="Education blog">Blog educativo</a>
+      <a data-es="Trabaja con nosotros" data-en="Careers">Trabaja con nosotros</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Soporte" data-en="Support">Soporte</h4>
+      <a data-es="Centro de ayuda" data-en="Help center">Centro de ayuda</a>
+      <a data-es="Contacto" data-en="Contact us">Contacto</a>
+      <a data-es="Términos de uso" data-en="Terms of use">Términos de uso</a>
+      <a data-es="Privacidad" data-en="Privacy policy">Privacidad</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-es="© 2026 EduNova Corporation. Todos los derechos reservados." data-en="© 2026 EduNova Corporation. All rights reserved.">© 2026 EduNova Corporation. Todos los derechos reservados.</p>
+    <div class="social-links">
+      <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+      <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube" aria-hidden="true"></i></a>
+      <a href="#" aria-label="TikTok"><i class="ti ti-brand-tiktok" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    var btnEs = document.getElementById('btn-es');
+    var btnEn = document.getElementById('btn-en');
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEn.classList.toggle('active', lang === 'en');
+    btnEs.setAttribute('aria-pressed', lang === 'es');
+    btnEn.setAttribute('aria-pressed', lang === 'en');
+    document.documentElement.lang = lang;
+    var els = document.querySelectorAll('[data-es][data-en]');
+    els.forEach(function(el) {
+      var txt = el.getAttribute('data-' + lang);
+      if (!txt) return;
+      var tag = el.tagName;
+      if (tag === 'H1' || tag === 'H2') {
+        el.innerHTML = txt;
+      } else {
+        el.textContent = txt;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
