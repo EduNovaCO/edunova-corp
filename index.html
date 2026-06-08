@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
     :root {
       --green: #22D0A5;
       --green-dark: #1DA882;
@@ -28,16 +28,16 @@
       --border: rgba(255,255,255,0.08);
       --border-subtle: rgba(255,255,255,0.06);
     }
- 
+
     html { scroll-behavior: smooth; }
- 
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg-base);
       color: var(--text-primary);
       line-height: 1.6;
     }
- 
+
     /* ── NAV ── */
     .nav {
       display: flex;
@@ -118,7 +118,7 @@
       transition: background .2s;
     }
     .nav-cta:hover { background: var(--green-dark); }
- 
+
     /* ── HERO ── */
     .hero {
       padding: 100px 48px 80px;
@@ -223,7 +223,7 @@
       color: var(--text-faint);
       margin-top: 6px;
     }
- 
+
     /* ── SECTIONS ── */
     .section { padding: 88px 48px; }
     .section-alt { background: var(--bg-alt); }
@@ -252,7 +252,7 @@
       margin-bottom: 52px;
       font-weight: 300;
     }
- 
+
     /* ── PLATFORMS ── */
     .platforms-grid {
       display: grid;
@@ -342,7 +342,7 @@
     .plat-btn:hover { opacity: 0.85; }
     .plat-btn.green { background: var(--green); color: var(--bg-base); }
     .plat-btn.blue { background: transparent; color: var(--blue-mid); border: 0.5px solid rgba(55,138,221,0.4); }
- 
+
     /* ── METHOD ── */
     .method-grid {
       display: grid;
@@ -365,7 +365,7 @@
     .method-icon { font-size: 22px; margin-bottom: 14px; color: var(--green); display: block; }
     .method-card h4 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
     .method-card p { font-size: 13px; color: rgba(232,237,245,0.55); line-height: 1.65; font-weight: 300; }
- 
+
     /* ── TRUST ── */
     .trust-row { display: flex; gap: 20px; flex-wrap: wrap; }
     .trust-card {
@@ -383,7 +383,7 @@
       margin-bottom: 4px;
     }
     .trust-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
- 
+
     /* ── TESTIMONIALS ── */
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .testi-card {
@@ -411,7 +411,7 @@
     }
     .testi-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
     .testi-loc { font-size: 11px; color: var(--text-faint); }
- 
+
     /* ── CTA ── */
     .cta-section {
       padding: 88px 48px;
@@ -462,7 +462,7 @@
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
     }
- 
+
     /* ── FOOTER ── */
     .footer {
       background: var(--bg-deep);
@@ -515,7 +515,7 @@
     .social-links { display: flex; gap: 16px; }
     .social-links a { font-size: 18px; color: rgba(232,237,245,0.35); cursor: pointer; transition: color .2s; text-decoration: none; }
     .social-links a:hover { color: var(--green); }
- 
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
@@ -536,7 +536,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-logo">Edu<span class="accent">Nova</span><span class="corp">Corporation</span></a>
@@ -551,10 +551,9 @@
       <button class="lang-btn active" id="btn-es" onclick="setLang('es')" aria-pressed="true">ES</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
     </div>
-    <button class="nav-cta" data-es="Comenzar ahora" data-en="Get Started">Comenzar ahora</button>
   </div>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">
@@ -565,7 +564,7 @@
   <p class="hero-sub" data-es="EduNova Corporation desarrolla plataformas de aprendizaje de idiomas que combinan pedagogía científicamente validada con tecnología adaptativa — para que cada estudiante alcance la fluidez real, no la teórica." data-en="EduNova Corporation builds language learning platforms that combine scientifically validated pedagogy with adaptive technology — so every student achieves real fluency, not just textbook knowledge.">EduNova Corporation desarrolla plataformas de aprendizaje de idiomas que combinan pedagogía científicamente validada con tecnología adaptativa — para que cada estudiante alcance la fluidez real, no la teórica.</p>
   <div class="hero-btns">
     <a href="https://6a26c5913623342759fff07b--espanolgo.netlify.app/" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;" data-es="Explorar EspañolGo →" data-en="Explore EspañolGo →">Explorar EspañolGo →</a>
-    <button class="btn-secondary" data-es="Ver cómo funciona" data-en="See how it works">Ver cómo funciona</button>
+    <a href="#platforms" class="btn-secondary" style="text-decoration:none;" data-es="Explorar EnglishLevelUp →" data-en="Explore EnglishLevelUp →">Explorar EnglishLevelUp →</a>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
@@ -586,7 +585,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- PLATFORMS -->
 <section class="section section-alt" id="platforms">
   <div class="section-tag" data-es="Nuestras plataformas" data-en="Our platforms">Nuestras plataformas</div>
@@ -627,7 +626,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- METHODOLOGY -->
 <section class="section" id="methodology">
   <div class="section-tag" data-es="Metodología" data-en="Methodology">Metodología</div>
@@ -672,7 +671,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- RESULTS -->
 <section class="section section-alt" id="results">
   <div class="section-tag" data-es="Por qué EduNova" data-en="Why EduNova">Por qué EduNova</div>
@@ -697,7 +696,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- TESTIMONIALS -->
 <section class="section">
   <div class="section-tag" data-es="Testimonios" data-en="Student stories">Testimonios</div>
@@ -739,7 +738,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- WORK WITH US -->
 <section class="section" id="contact">
   <div class="section-tag" data-es="Únete a EduNova" data-en="Join EduNova">Únete a EduNova</div>
@@ -770,7 +769,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- CTA -->
 <section class="cta-section" id="about">
   <div class="section-tag" data-es="Tu próximo nivel" data-en="Your next level">Tu próximo nivel</div>
@@ -781,7 +780,7 @@
     <button class="btn-outline" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</button>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
@@ -821,7 +820,7 @@
     </div>
   </div>
 </footer>
- 
+
 <script>
   function setLang(lang) {
     var btnEs = document.getElementById('btn-es');
@@ -844,7 +843,6 @@
     });
   }
 </script>
- 
+
 </body>
 </html>
- 
